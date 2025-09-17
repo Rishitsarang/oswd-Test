@@ -1,0 +1,39 @@
+<!-- public/categories.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories</title>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <h1>Categories</h1>
+
+  <h3>Add / Edit Category</h3>
+  <input type="hidden" id="categoryId">
+  <input type="text" id="categoryName" placeholder="Category Name">
+  <button onclick="saveCategory()">Save</button>
+
+  <h3>All Categories</h3>
+  <table border="1" id="categoriesTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="js/categories.js"></script>
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('navbar').innerHTML = data);
+
+    loadCategories();
+  </script>
+</body>
+</html>

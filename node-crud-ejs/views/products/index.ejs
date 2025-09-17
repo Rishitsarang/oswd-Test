@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <h2>Products</h2>
+    <a href="/products/new">Add Product</a>
+    <ul>
+        <% products.forEach(p => { %>
+            <li>
+                <%= p.name %> - $<%= p.price %> - <%= p.category ? p.category.name : 'No Category' %>
+                <a href="/products/<%= p._id %>/edit">Edit</a>
+                <form method="post" action="/products/<%= p._id %>?_method=DELETE" style="display: inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }) %>    
+    </ul>
+</body>
+</html>
